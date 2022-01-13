@@ -7,7 +7,7 @@ import { PlayerModel } from "../player/player"
  */
 
 const shuffleArray = (array) => {
-  const resArray = [...array]
+  const resArray: string[] = [...array]
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     const temp = resArray[i]
@@ -46,6 +46,9 @@ export const PlayerStoreModel = types
         self.team1 = shuffleArray(self.team1)
         self.team2 = shuffleArray(self.team2)
       }
+    },
+    setWords(player, words) {
+      self.players.at(self.players.indexOf(player)).words = words
     },
   }))
 

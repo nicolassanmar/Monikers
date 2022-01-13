@@ -6,6 +6,7 @@ import { Instance, SnapshotOut, types } from "mobx-state-tree"
 export const PlayerModel = types
   .model({
     name: types.identifier,
+    words: types.array(types.string),
   })
   .props({})
   .views((self) => ({})) // eslint-disable-line @typescript-eslint/no-unused-vars

@@ -7,9 +7,10 @@ import { useStores } from "../../models"
 import { color } from "../../theme"
 import { StackScreenProps } from "@react-navigation/stack"
 import { NavigatorParamList } from "../../navigators"
+import { colors } from "react-native-elements"
 
 const ROOT: ViewStyle = {
-  backgroundColor: color.palette.black,
+  backgroundColor: color.palette.white,
   flex: 1,
 }
 
@@ -23,11 +24,29 @@ export const Words1Screen: FC<StackScreenProps<NavigatorParamList, "words1">> = 
     // Pull in navigation via hook
     // const navigation = useNavigation()
 
+    const playerList = [...playerStore.team1, ...playerStore.team2]
+    const lastPlayer = playerList[playerList.length - 1]
+
     const goBack = () => navigation.goBack()
     return (
       <Screen style={ROOT} preset="scroll">
-        <Header headerTx="demoScreen.howTo" leftIcon="back" onLeftPress={goBack} />
-        <WordCreation currentPlayer={currentPlayer} />
+        <Header
+          titleStyle={{ color: colors.black }}
+          headerText={currentPlayer}
+          leftIcon="back"
+          onLeftPress={goBack}
+        />
+
+        <WordCreation
+          currentPlayer={currentPlayer}
+          onFinish={() => {
+            if (playerList.indexOf(currentPlayer) === playerList.length - 1) {
+              navigation.navigate("wordsSelect")
+            } else {
+              setCurrentPlayer(playerList[playerList.indexOf(currentPlayer) + 1])
+            }
+          }}
+        />
       </Screen>
     )
   },
