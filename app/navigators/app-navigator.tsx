@@ -15,6 +15,7 @@ import {
   Words1Screen,
   PlayersScreen,
   TeamSelectScreen,
+  ConfigScreen,
 } from "../screens"
 import { navigationRef, useBackButtonHandler } from "./navigation-utilities"
 
@@ -37,6 +38,7 @@ export type NavigatorParamList = {
   words1: undefined
   players: undefined
   teamSelect: undefined
+  config: undefined
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -56,6 +58,7 @@ const AppStack = () => {
       <Stack.Screen name="words1" component={Words1Screen} />
       <Stack.Screen name="players" component={PlayersScreen} />
       <Stack.Screen name="teamSelect" component={TeamSelectScreen} />
+      <Stack.Screen name="config" component={ConfigScreen} />
     </Stack.Navigator>
   )
 }

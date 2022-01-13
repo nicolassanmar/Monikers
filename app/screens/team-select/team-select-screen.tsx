@@ -71,7 +71,7 @@ export const TeamSelectScreen: FC<StackScreenProps<NavigatorParamList, "teamSele
         <Button
           onPress={() => {
             playerStore.setTeams(equipo1, equipo2)
-            navigation.navigate("words1")
+            navigation.navigate("config")
           }}
         />
       </Screen>

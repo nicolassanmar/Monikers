@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite"
 import { color, typography } from "../../theme"
 import { Text } from "../text/text"
 import { flatten } from "ramda"
-import { Button } from "../../components"
+import { Icon } from "react-native-elements"
 const CONTAINER: ViewStyle = {
   justifyContent: "flex-end",
   flexDirection: "row",
@@ -20,11 +20,7 @@ const TEXT: TextStyle = {
 }
 
 const BUTTON: TextStyle = {
-  width: 20,
-  height: 20,
-  padding: 10,
   margin: 10,
-  backgroundColor: "red",
 }
 
 export interface PlayerItemProps {
@@ -47,8 +43,12 @@ export const PlayerItem = observer(function PlayerItem(props: PlayerItemProps) {
   return (
     <View style={styles}>
       <Text style={TEXT}>{props.playerName}</Text>
-      <Button
+      <Icon
+        name="trash"
+        size={30}
+        color="red"
         style={BUTTON}
+        type="font-awesome"
         onPress={() => {
           props.erasePlayer(props.indx)
         }}
